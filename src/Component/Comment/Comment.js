@@ -2,10 +2,11 @@ import React from 'react';
 import './Comment.css';
 
 const Comment = (props) => {
-    const {name} = props.comment;
+    const {id} = props.comment;
     return (
         <div>
-            <h4>{name}</h4>
+            <h4>Comments</h4>
+            <p>User Id: {id}</p>
         </div>
     );
 };

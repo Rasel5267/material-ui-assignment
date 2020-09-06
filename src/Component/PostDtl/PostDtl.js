@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Container } from '@material-ui/core';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import Comment from '../Comment/Comment';
 
 const PostDtl = () => {
     let {postId} = useParams();
@@ -26,6 +27,7 @@ const PostDtl = () => {
                         <i class="material-icons">mode_comment</i>
                     </div>
                 </div>
+                <Comment></Comment>
             </div>
         </Container>
     );

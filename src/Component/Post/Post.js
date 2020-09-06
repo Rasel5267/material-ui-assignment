@@ -3,7 +3,6 @@ import { Button, Container } from '@material-ui/core';
 import './Post.css';
 import { Link } from 'react-router-dom';
 
-
 const Post = (props) => {
     const{title,body,id}= props.post;
     return (
