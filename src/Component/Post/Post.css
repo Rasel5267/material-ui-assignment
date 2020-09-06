@@ -1,0 +1,17 @@
+.post{
+    box-shadow:  0px 2px 10px 0px rgba(69, 99, 87, 0.75);
+    margin: 50px;
+    padding: 20px;
+}
+.icon{
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+
+}
+.first-icon{
+    padding-right: 15px;
+}
+.material-icons{
+    cursor: pointer;
+}
