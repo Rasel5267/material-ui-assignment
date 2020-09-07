@@ -3,6 +3,12 @@ import { Button, Container } from '@material-ui/core';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Comment from '../Comment/Comment';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import './PostDtl.css';
 
 const PostDtl = () => {
     let {postId} = useParams();
@@ -11,25 +17,53 @@ const PostDtl = () => {
         fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
         .then(res => res.json())
         .then(data => setPostDtl(data))
-    })
+    },[])
+
+    const [comment, setComment] = useState([]);
+    useEffect(() =>{
+        fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`)
+        .then(res => res.json())
+        .then(data => setComment(data))
+    },[])
+    
+    const useStyles = makeStyles({
+        root: {
+          minWidth: 275,
+          marginTop: '30px',
+          padding: '10px'
+        },
+        title: {
+          fontSize: 14,
+        },
+        pos: {
+          marginBottom: 12,
+        },
+      });
+      const classes = useStyles();
     return (
         <Container maxWidth="md">
             <div className="post">
-                <h2>{postDtl.title}</h2>
-                <p>{postDtl.body}</p>
-                <Link to="../Posts/Posts.js"><Button variant="outlined" color="primary">Back To Post</Button></Link>
-                <div className="icon">
-                    <div> 
-                        <i class="material-icons first-icon">thumb_up_alt</i>
-                        <i class="material-icons">thumb_down_alt</i>
-                    </div>
-                    <div>
-                        <i class="material-icons">mode_comment</i>
-                    </div>
-                </div>
-                <Comment></Comment>
+                <Card className={classes.root}>
+                    <CardContent>
+                        <Typography className={classes.title} color="textSecondary" gutterBottom>
+                            <h3>{postDtl.title}</h3>
+                        </Typography>
+                        <Typography className={classes.pos} color="textSecondary">
+                            {postDtl.body}
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                    <Link to="../Posts/Posts.js"><Button variant="outlined" color="primary">Back To Post</Button></Link>
+                    </CardActions>
+                </Card>
+                <h4 class="comment-title">Comments</h4>
+                    {
+                        comment.map(comment => <Comment comment={comment}></Comment>)
+                    }
             </div>
+            
         </Container>
+        
     );
 };
 

@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Container from '@material-ui/core/Container';
+import './Header.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,20 +23,27 @@ const useStyles = makeStyles((theme) => ({
 const Header = () => {
     const classes = useStyles();
     return (
+      <div>
         <div className={classes.root}>
-        <AppBar position="static">
-            <Container>
-                <Toolbar>
-                    <Typography variant="h6" className={classes.title}>
-                      News
-                    </Typography>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                    <MenuIcon />
-                    </IconButton>
-                </Toolbar>
-            </Container>
-        </AppBar>
+          <AppBar position="static">
+              <Container>
+                  <Toolbar>
+                      <Typography variant="h6" className={classes.title}>
+                        News
+                      </Typography>
+                      <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                      <MenuIcon />
+                      </IconButton>
+                  </Toolbar>
+              </Container>
+          </AppBar>
+        </div>
+        <div className="title">
+          <h1>Welcome to Our News Portal</h1>
+        </div>
       </div>
+
+
     );
 };
 
